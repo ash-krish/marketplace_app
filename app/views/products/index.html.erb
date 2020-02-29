@@ -1,0 +1,10 @@
+<div class="container text-left">
+<h1>Take Two!</h1>
+
+<ul>
+  <% @products.each do |product| %>
+  
+  <%= link_to product.title, product_path(product) %><br><br>
+  <% end %>
+</ul>
+</div>

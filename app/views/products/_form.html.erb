@@ -1,0 +1,56 @@
+<%= form_with model: @product, local: true do |form| %>
+
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@product.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @product.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :description %>(Reason for selling, brand, how old, etc.)<br>
+    <%= form.text_area :description %>
+  </p>
+  <p>
+    <%= form.label :colour %><br>
+    <%= form.text_field :colour %>
+  </p>
+  <p>
+    <%= form.label :condition %><br>
+    <%= form.text_field :condition %>
+  </p>
+  
+  <p>
+    <%= form.label :size %><br>
+    <%= form.text_field :size %>
+  </p>
+   <p>
+    <%= form.label :price %><br>
+    <%= form.text_field :price %>
+  </p>
+   <p>
+    <%= form.label :location %><br>
+    <%= form.text_field :location %>
+  </p>
+  <p>
+    <%= form.label :Photo %><br>
+    <%= form.submit "Upload photo"%>
+  </p>
+  <p>
+    <%= form.submit %>
+ <button type="submit" class="btn btn-primary">Submit</button>
+   </p>
+<% end %>

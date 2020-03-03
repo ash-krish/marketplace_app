@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   
 
 
- root "products#index"
+ root to: "products#index"
 
  resources :products
+ resources :dashboard, only: [:index]
 end

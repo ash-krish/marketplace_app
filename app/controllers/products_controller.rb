@@ -1,4 +1,8 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authorise_user!, only: [:update, :edit, :destroy]
+  before_action :find_product, only: [:show, :edit, :update, :destroy]
+
   def index
     @products = Product.all
   end
@@ -51,6 +55,14 @@ end
   private
   def product_params
     params.require(:product).permit(:title, :description, :colour, :size, :price)
+  end
+
+  def find_product
+    @product = Product.find(params[:id])
+  end
+
+  def authorise_user!
+    return true if current_user == @product.user
   end
 
 end
